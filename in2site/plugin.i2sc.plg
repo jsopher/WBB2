@@ -1,0 +1,3 @@
+if((document.all)&&(typeof(top.VARITS9002.document)=="object")){
+	top.VARITS9002.document.title=document.title;
+	top.document.title=document.title;}

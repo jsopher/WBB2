@@ -1,0 +1,6 @@
+function exeITSPT(){
+	if((document.all)&&(typeof(document.frames[VARITSDTF].document)=="object")){
+		if(typeof(document.frames[VARITSDTF].document.title)=="string"){
+			top.document.title=document.frames[VARITSDTF].document.title;
+			document.title=document.frames[VARITSDTF].document.title;}}}
+setInterval("exeITSPT()", 1000);

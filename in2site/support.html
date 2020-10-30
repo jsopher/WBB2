@@ -1,0 +1,109 @@
+<html>
+
+ <head>
+  <meta http-equiv="content-type" content="text/html;charset=ISO-8859-1">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+  <meta http-equiv="Expires" content="0">
+  
+<script language="JavaScript1.2">
+
+//--------------------------------------------------
+
+var theFrame = false;
+var theWindow = false;
+var theForm = false;
+
+//--------------------------------------------------
+
+theHTML = new String("");
+
+theHTML += "<html>\n";
+theHTML += "<head>\n";
+theHTML += "<meta http-equiv=\"content-type\" content=\"text/html;charset=ISO-8859-1\">\n";
+theHTML += "<\/head>\n";
+theHTML += "<body bgcolor=\"#ffffff\">\n";
+theHTML += "\n";
+theHTML += "<form name=\"ANALYSE\" action=\"http://setup.in2site.asc-server.com/_analyse/index.ics\" method=\"post\" enctype=\"application/x-www-form-urlencoded\" target=\"_self\">\n";
+
+theHTML += "<input type=\"hidden\" value=\"\" name=\"vcn\">\n";
+theHTML += "<input type=\"hidden\" value=\"\" name=\"vdb\">\n";
+theHTML += "<input type=\"hidden\" value=\"\" name=\"vsu\">\n";
+theHTML += "<input type=\"hidden\" value=\"\" name=\"vnn\">\n";
+theHTML += "<input type=\"hidden\" value=\"\" name=\"vnp\">\n";
+theHTML += "<input type=\"hidden\" value=\"\" name=\"loc\">\n";
+theHTML += "<input type=\"hidden\" value=\"\" name=\"vto\">\n";
+theHTML += "<input type=\"hidden\" value=\"\" name=\"v13\">\n";
+
+theHTML += "<\/form>\n";
+theHTML += "\n";
+theHTML += "<\/body>\n";
+theHTML += "<\/html>\n";
+
+//--------------------------------------------------
+
+function in2site_system(){
+	if(typeof(top.frames["ANALYSE_FRAME"].frames["VARITS9001"]) == "object"){
+		theFrame = top.frames["ANALYSE_FRAME"].frames["VARITS9001"];}
+	else{
+		theFrame = false;}
+	
+	if(theFrame){
+		theWindow = window.open("about:blank", "theWindow", "status=no,scrollbars=no,width=450,height=300,left=0,top=0,dependent=yes");
+		
+		if(theWindow){
+			theWindow.document.write(theHTML);
+			
+			setTimeout("in2site_readdata()", 500);}}}
+
+//--------------------------------------------------
+
+function in2site_readdata(){
+	if(theFrame){
+		theSet = new Array();
+		
+		theSet["vcn"] = top.frames["ANALYSE_FRAME"].vcn;
+		theSet["vdb"] = top.frames["ANALYSE_FRAME"].vdb;
+		theSet["vsu"] = top.frames["ANALYSE_FRAME"].vsu;
+		theSet["vnn"] = top.frames["ANALYSE_FRAME"].vnn;
+		theSet["vnp"] = top.frames["ANALYSE_FRAME"].vnp;
+		
+		theSet["loc"] = theFrame.location.href;
+		theSet["vto"] = theFrame.VARITSTO;
+		theSet["v13"] = theFrame.VARITS13;
+		
+		if(typeof(theWindow.document.forms[0]) == "object"){
+			theForm = theWindow.document.forms[0];
+			
+			theForm.vcn.value = theSet.vcn;
+			theForm.vdb.value = theSet.vdb;
+			theForm.vsu.value = theSet.vsu;
+			theForm.vnn.value = theSet.vnn;
+			theForm.vnp.value = theSet.vnp;
+			theForm.loc.value = theSet.loc;
+			theForm.vto.value = theSet.vto;
+			theForm.v13.value = theSet.v13;
+			setTimeout("in2site_submit()", 500);}
+		else{
+			theForm = false;}}}
+
+//--------------------------------------------------
+
+function in2site_submit(){
+	theForm.submit();}
+
+//--------------------------------------------------
+
+setTimeout("in2site_system()", 5000);
+
+//--------------------------------------------------
+
+</script>
+
+ </head>
+
+ <frameset rows="100%,*" border="0" framespacing="0" frameborder="no">
+  <frame src="../" name="ANALYSE_FRAME" noresize>
+  <frame src="about:blank" name="NULL_FRAME" noresize>
+ </frameset>
+</html>
